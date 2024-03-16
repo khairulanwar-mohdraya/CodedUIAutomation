@@ -1,0 +1,14 @@
+{
+  "local": {
+    "chromeDriverPath": "C:\\Tools\\Selenium",
+    "testUrl": "http://google.com"
+  },
+  "uat": {
+    "chromeDriverPath": "C:\\Tools\\Selenium",
+    "testUrl": "http://google.com"
+  },
+  "production": {
+    "chromeDriverPath": "C:\\Tools\\Selenium",
+    "testUrl": "http://google.com"
+  }
+}

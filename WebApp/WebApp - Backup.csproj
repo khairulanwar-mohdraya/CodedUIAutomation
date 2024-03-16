@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.9.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.2.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.2.2" />
+    <PackageReference Include="Selenium.WebDriver" Version="4.18.1" />
+    <PackageReference Include="SpecFlow" Version="3.9.74" />
+    <PackageReference Include="SpecFlow.MsTest" Version="3.9.74" />
+    <PackageReference Include="SpecFlow.Plus.LivingDocPlugin" Version="3.9.57" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.9.74" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\SeleniumCommand\SeleniumCommand.csproj" />
+  </ItemGroup>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="FOR /F &quot;tokens=*&quot; %25%25a IN ('date /F yyyy-MM-dd_HH-mm-ss') DO SET datetime=%25%25a&#xD;&#xA;&#xD;&#xA;IF EXIST &quot;C:\Dev\TestAutomation\TestResults\TestAutomationResults.html&quot; (&#xD;&#xA;  REM File exists, rename it&#xD;&#xA;  ren &quot;C:\Dev\TestAutomation\TestResults\TestAutomationResults.html&quot; &quot;TestAutomationResults_%25%25datetime%25.html&quot;&#xD;&#xA;) ELSE (&#xD;&#xA;  REM File doesn't exist, create an empty file&#xD;&#xA;  echo. &gt; &quot;C:\Dev\TestAutomation\TestResults\TestAutomationResults.html&quot;&#xD;&#xA;  ren &quot;C:\Dev\TestAutomation\TestResults\TestAutomationResults.html&quot; &quot;TestAutomationResults_%25%25datetime%25.html&quot;&#xD;&#xA;)&#xD;&#xA;&#xD;&#xA;livingdoc feature-folder C:\Dev\TestAutomation\WebApp\ -t C:\Dev\TestAutomation\WebApp\bin\Debug\net7.0\TestExecution.json --output C:\Dev\TestAutomation\TestResults\TestAutomationResults_%25%25datetime%25.html" />
+  </Target>
+
+</Project>
