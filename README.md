@@ -49,7 +49,9 @@ It also displays test results directly within the documentation and provides a c
 To generate the test result documentation, LivingDoc command-line tool is used or integration with the build process (like a post-build event in Visual Studio) to transform the SpecFlow feature files and test results into LivingDoc HTML documentation.
 
 
-
+<br>
+<br>
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 **How to run test using CLI**
 1) Build the solution and go to the solution build folder path to run below command:
 
