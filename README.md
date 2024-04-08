@@ -1,4 +1,4 @@
-## Coded UI Test automation using Selenium, Specflow, and MSTest Framework with BDD approach.
+![image](https://github.com/khairulanwar-mohdraya/CodedUIAutomation/assets/100569372/b3b59513-289e-4eb6-b930-5e1c4a670350)## Coded UI Test automation using Selenium, Specflow, and MSTest Framework with BDD approach.
 This is a sample code of Visual Studio Solution to automate UI Testing using Behaviour Driven Development approach.
 <br>
 
@@ -49,3 +49,16 @@ It also displays test results directly within the documentation and provides a c
 To generate the test result documentation, LivingDoc command-line tool is used or integration with the build process (like a post-build event in Visual Studio) to transform the SpecFlow feature files and test results into LivingDoc HTML documentation.
 
 
+
+**How to run test using CLI**
+1) Build the solution and go to the solution build folder path to run below command:
+
+   dotnet test application.dll -l console -v detailed
+
+2) After the test run is completed, check **TestExecution.json** file is generated in the build folder path
+
+3) Run the below command to generate the Test result in HTML.
+	
+livingdoc feature-folder C:\sources\UITestAutomation\App\ -t C:\sources\UITestAutomation\App\bin\UAT\net7.0\TestExecution.json --output C:\sources\UITestAutomation\TestResults\TestAutomationResults.html
+
+4) Open the TestAutomationResults.html in the folder path
