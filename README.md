@@ -1,4 +1,3 @@
-![image](https://github.com/khairulanwar-mohdraya/CodedUIAutomation/assets/100569372/b3b59513-289e-4eb6-b930-5e1c4a670350)## Coded UI Test automation using Selenium, Specflow, and MSTest Framework with BDD approach.
 This is a sample code of Visual Studio Solution to automate UI Testing using Behaviour Driven Development approach.
 <br>
 
