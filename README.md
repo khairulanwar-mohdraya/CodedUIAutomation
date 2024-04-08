@@ -53,6 +53,9 @@ To generate the test result documentation, LivingDoc command-line tool is used o
 <be>
 -----------------------------------------------------------------------------------------------------------------------------------------------------------
 **How to run test using CLI**
+<br>
+<br>
+	
 1) Build the solution and go to the solution build folder path to run below command:
 
    dotnet test application.dll -l console -v detailed
