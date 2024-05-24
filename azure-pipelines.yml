@@ -42,7 +42,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*.csproj'
+    projects: '**/WebApp/WebApp*.csproj'
     arguments: '--configuration $(buildConfiguration) --logger trx'
 
 - task: PublishTestResults@2
