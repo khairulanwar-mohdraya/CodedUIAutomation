@@ -10,7 +10,7 @@ pool:
   vmImage: 'windows-latest'
 
 variables:
-  solution: 'master/CodedUI.sln'
+  solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
 
@@ -42,7 +42,7 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: 'master/WebApp/WebApp.csproj'
+    projects: '**/*.csproj'
     arguments: '--configuration $(buildConfiguration) --logger trx'
 
 - task: PublishTestResults@2
