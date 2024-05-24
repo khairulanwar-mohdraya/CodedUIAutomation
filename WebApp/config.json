@@ -1,14 +1,14 @@
 {
   "local": {
-    "chromeDriverPath": "C:\\Tools\\Selenium",
+    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\dev",
     "testUrl": "http://google.com"
   },
   "uat": {
-    "chromeDriverPath": "C:\\Tools\\Selenium",
+    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\dev",
     "testUrl": "http://google.com"
   },
   "production": {
-    "chromeDriverPath": "C:\\Tools\\Selenium",
+    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\dev",
     "testUrl": "http://google.com"
   }
 }
