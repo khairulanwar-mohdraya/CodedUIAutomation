@@ -1,14 +1,14 @@
 {
   "local": {
-    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\dev",
+    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\master",
     "testUrl": "http://google.com"
   },
   "uat": {
-    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\dev",
+    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\master",
     "testUrl": "http://google.com"
   },
   "production": {
-    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\dev",
+    "chromeDriverPath": "C:\\dev\\Github\\CodedUIAutomation\\master",
     "testUrl": "http://google.com"
   }
 }
