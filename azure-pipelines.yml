@@ -18,7 +18,7 @@ steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '7.0.19' # Specify the .NET version you are using
+    version: '7.0.409' # Specify the .NET version you are using
 
 - task: NuGetToolInstaller@1
 
