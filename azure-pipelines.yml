@@ -13,6 +13,7 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  chromeDriverVersion: '125.0.6422.78'
 
 steps:
 - task: UseDotNet@2
@@ -32,6 +33,20 @@ steps:
     msbuildArgs: '/p:Configuration=$(buildConfiguration)'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+
+# Download ChromeDriver
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $chromeDriverVersion = '$(chromeDriverVersion)'
+      $chromeDriverUrl = "https://storage.googleapis.com/chrome-for-testing-public/$chromeDriverVersion/win64/chromedriver-win64.zip"
+      $chromeDriverZip = "$(Build.BinariesDirectory)\chromedriver-win64.zip"
+      $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver.exe"
+
+      Invoke-WebRequest -Uri $chromeDriverUrl -OutFile $chromeDriverZip
+      Expand-Archive -Path $chromeDriverZip -DestinationPath "$(Build.BinariesDirectory)"
+      Remove-Item -Path $chromeDriverZip
 
 - task: DotNetCoreCLI@2
   inputs:
