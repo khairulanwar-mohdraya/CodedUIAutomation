@@ -57,7 +57,7 @@ steps:
 - task: CopyFiles@2
   displayName: 'Copy Chromedriver'
   inputs:
-    SourceFolder: '**/'  # Specify the path to your Chromedriver directory
+    SourceFolder: 'Tool/'  # Specify the path to your Chromedriver directory
     Contents: 'chromedriver.exe'
     TargetFolder: '$(Build.ArtifactStagingDirectory)/chromedriver'
 
