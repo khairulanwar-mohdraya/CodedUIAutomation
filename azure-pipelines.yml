@@ -51,7 +51,7 @@ steps:
       $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver"
 
       Invoke-WebRequest -Uri $chromeDriverUrl -OutFile $chromeDriverZip
-      Expand-Archive -Path $chromeDriverZip -DestinationPath "$(Build.BinariesDirectory)"
+      Expand-Archive -Path $chromeDriverZip -DestinationPath $chromeDriverPath
       Remove-Item -Path $chromeDriverZip
 
 - task: DotNetCoreCLI@2
