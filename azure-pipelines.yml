@@ -46,8 +46,8 @@ steps:
     targetType: 'inline'
     script: |
       $chromeDriverVersion = '$(chromeDriverVersion)'
-      $chromeDriverUrl = "https://storage.googleapis.com/chrome-for-testing-public/$chromeDriverVersion/win64/chromedriver-win64.zip"
-      $chromeDriverZip = "$(Build.BinariesDirectory)\chromedriver-win64.zip"
+      $chromeDriverUrl = "https://chromedriver.storage.googleapis.com/$chromeDriverVersion/chromedriver_win32.zip"
+      $chromeDriverZip = "$(Build.BinariesDirectory)\chromedriver_win32.zip"
       $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver.exe"
 
       Invoke-WebRequest -Uri $chromeDriverUrl -OutFile $chromeDriverZip
