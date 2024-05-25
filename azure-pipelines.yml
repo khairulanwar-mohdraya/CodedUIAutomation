@@ -46,7 +46,7 @@ steps:
     targetType: 'inline'
     script: |
       $chromeDriverVersion = '$(chromeDriverVersion)'
-      $chromeDriverUrl = "https://chromedriver.storage.googleapis.com/$chromeDriverVersion/chromedriver_win32.zip"
+      $chromeDriverUrl = "https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.78/win32/chromedriver-win32.zip"
       $chromeDriverZip = "$(Build.BinariesDirectory)\chromedriver_win32.zip"
       $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver.exe"
 
