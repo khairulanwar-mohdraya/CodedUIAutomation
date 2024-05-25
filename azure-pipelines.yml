@@ -54,6 +54,13 @@ steps:
       Expand-Archive -Path $chromeDriverZip -DestinationPath $chromeDriverPath
       Remove-Item -Path $chromeDriverZip
 
+- task: CopyFiles@2
+  displayName: 'Copy Chromedriver'
+  inputs:
+    SourceFolder: '**/'  # Specify the path to your Chromedriver directory
+    Contents: 'chromedriver.exe'
+    TargetFolder: '$(Build.ArtifactStagingDirectory)/chromedriver'
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
