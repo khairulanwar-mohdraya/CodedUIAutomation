@@ -29,7 +29,7 @@ namespace SeleniumCommand.Configuration
         {
             // return _jToken.SelectToken("$..chromeDriverPath").ToString();
             var path = (string)_config[_environment]["chromeDriverPath"];
-            if (path == "azure")
+            if (_environment == "azure")
             {
                 path = Environment.GetEnvironmentVariable("CHROMEWEBDRIVER") ?? throw new InvalidOperationException("CHROMEWEBDRIVER environment variable is not set.");
             }
