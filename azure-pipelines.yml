@@ -13,12 +13,13 @@ variables:
   solution: '**/*.sln'
   buildPlatform: 'Any CPU'
   buildConfiguration: 'Release'
+  chromeDriverVersion: '125.0.6422.78'
 
 steps:
 - task: UseDotNet@2
   inputs:
     packageType: 'sdk'
-    version: '8.0.205' # Specify the .NET version you are using
+    version: '7.0.409' # Specify the .NET version you are using
 
 - task: NuGetToolInstaller@1
 
@@ -33,6 +34,20 @@ steps:
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
 
+# Download ChromeDriver
+- task: PowerShell@2
+  inputs:
+    targetType: 'inline'
+    script: |
+      $chromeDriverVersion = '$(chromeDriverVersion)'
+      $chromeDriverUrl = "https://storage.googleapis.com/chrome-for-testing-public/$chromeDriverVersion/win64/chromedriver-win64.zip"
+      $chromeDriverZip = "$(Build.BinariesDirectory)\chromedriver-win64.zip"
+      $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver.exe"
+
+      Invoke-WebRequest -Uri $chromeDriverUrl -OutFile $chromeDriverZip
+      Expand-Archive -Path $chromeDriverZip -DestinationPath "$(Build.BinariesDirectory)"
+      Remove-Item -Path $chromeDriverZip
+
 - task: DotNetCoreCLI@2
   inputs:
     command: 'build'
@@ -42,8 +57,11 @@ steps:
 - task: DotNetCoreCLI@2
   inputs:
     command: 'test'
-    projects: '**/*.csproj'
+    projects: '**/WebApp/WebApp*.csproj'
     arguments: '--configuration $(buildConfiguration) --logger trx'
+  env:
+    CHROMEWEBDRIVER: $(Build.BinariesDirectory)
+    TEST_ENVIRONMENT: azure
 
 - task: PublishTestResults@2
   inputs:
