@@ -48,7 +48,7 @@ steps:
       $chromeDriverVersion = '$(chromeDriverVersion)'
       $chromeDriverUrl = "https://storage.googleapis.com/chrome-for-testing-public/125.0.6422.78/win32/chromedriver-win32.zip"
       $chromeDriverZip = "$(Build.BinariesDirectory)\chromedriver-win32.zip"
-      $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver.exe"
+      $chromeDriverPath = "$(Build.BinariesDirectory)\chromedriver"
 
       Invoke-WebRequest -Uri $chromeDriverUrl -OutFile $chromeDriverZip
       Expand-Archive -Path $chromeDriverZip -DestinationPath "$(Build.BinariesDirectory)"
@@ -60,7 +60,7 @@ steps:
     projects: '**/WebApp/WebApp*.csproj'
     arguments: '--configuration $(buildConfiguration) --logger trx'
   env:
-    CHROMEWEBDRIVER: $(Build.BinariesDirectory)
+    CHROMEWEBDRIVER: $(Build.BinariesDirectory)\chromedriver
     TEST_ENVIRONMENT: azure
 
 - task: PublishTestResults@2
