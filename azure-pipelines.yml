@@ -59,7 +59,7 @@ steps:
   inputs:
     SourceFolder: 'Tool/'  # Specify the path to your Chromedriver directory
     Contents: 'chromedriver.exe'
-    TargetFolder: '$(Build.ArtifactStagingDirectory)/chromedriver'
+    TargetFolder: '$(Build.BinariesDirectory)/chromedriver'
 
 - task: DotNetCoreCLI@2
   inputs:
