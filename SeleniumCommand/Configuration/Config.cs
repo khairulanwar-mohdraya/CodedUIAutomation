@@ -6,28 +6,40 @@ namespace SeleniumCommand.Configuration
 {
     public class Config : IConfig
     {
-        private JToken _jToken;
+        // private JToken _jToken;
+        private readonly JObject _config;
+        private readonly string _environment;
 
         public Config()
         {
-            JObject jsonConfig = JObject.Parse(GetConfig());
-#if DEBUG
-            _jToken = jsonConfig.SelectToken("$.local");
-#elif UAT
-            _jToken = jsonConfig.SelectToken("$.uat");
-#elif RELEASE
-            _jToken = jsonConfig.SelectToken("$.production");
-#endif
+//             JObject jsonConfig = JObject.Parse(GetConfig());
+// #if DEBUG
+//             _jToken = jsonConfig.SelectToken("$.local");
+// #elif UAT
+//             _jToken = jsonConfig.SelectToken("$.uat");
+// #elif RELEASE
+//             _jToken = jsonConfig.SelectToken("$.production");
+// #endif
+            _config = JObject.Parse(GetConfig());
+            _environment = Environment.GetEnvironmentVariable("TEST_ENVIRONMENT") ?? "local";
+        
         }
 
         public string ChromeDriverPath()
         {
-            return _jToken.SelectToken("$..chromeDriverPath").ToString();
+            // return _jToken.SelectToken("$..chromeDriverPath").ToString();
+            var path = (string)_config[_environment]["chromeDriverPath"];
+            if (path == "azure")
+            {
+                path = Environment.GetEnvironmentVariable("CHROMEWEBDRIVER") ?? throw new InvalidOperationException("CHROMEWEBDRIVER environment variable is not set.");
+            }
+            return path;
         }
 
         public string TestUrl()
         {
-            return _jToken.SelectToken("$..testUrl").ToString();
+            // return _jToken.SelectToken("$..testUrl").ToString();
+            return (string)_config[_environment]["testUrl"];
         }
 
         private string GetConfig()

@@ -6,6 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <DebugType>portable</DebugType> <!-- Ensure this is set to portable -->
+    <DebugSymbols>true</DebugSymbols>
+    <Optimize>false</Optimize>
   </PropertyGroup>
 
   <ItemGroup>
